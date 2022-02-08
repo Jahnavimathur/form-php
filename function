@@ -1,0 +1,99 @@
+ function validateForm() {
+        let name = document.forms["myForm"]["name"].value;
+        if (name == "") {
+          alert("Name must be filled out");
+          return false;
+        }
+        if (!/^[a-zA-Z]*$/g.test(document.myForm.name.value)) {
+        alert("Invalid characters in name");
+        document.myForm.name.focus();
+        return false;
+        }
+        if( document.myForm.email.value == "" ) {
+                  alert( "Please provide your Email!" );
+                  document.myForm.email.focus() ;
+                  return false;
+        }
+        
+         var emailID = document.myForm.email.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         
+         if (atpos < 1 || ( dotpos - atpos < 2 )) {
+            alert("Please enter correct email ID")
+            document.myForm.email.focus() ;
+            return false;
+         }
+
+         if( document.myForm.phone.value == "" || isNaN( document.myForm.phone.value ) ||
+            document.myForm.phone.value.length != 10 ) {
+            
+            alert( "Please provide 10 digit phone number" );
+            document.myForm.phone.focus() ;
+            return false;
+         }   
+
+         let y = document.forms["myForm"]["password"].value;
+        if (y == "") {
+          alert("Enter your password");
+          return false;
+        } 
+
+
+        var password = document.forms['myForm']["password"].value;
+          if (password.length < 6){
+              alert("*Password should be atleast 6 characters long!");
+              
+                  return false;
+          }
+
+          var cpassword = document.forms['myForm']["confirm-password"].value;
+          if (cpassword != password){
+              alert("*Password and Confirm password should match!");
+              
+                  return false;
+          }      
+        
+
+        let gender = document.forms["myForm"]["gender"].value;
+        if (gender == "") {
+          alert("Select your gender");
+          return false;
+        }
+
+        var chkBox = document.getElementsByName('courses[]');
+        var lenChkBox = chkBox.length;
+        
+        var valid=0;
+        for(var i=0;i<lenChkBox;i++) {
+          if(chkBox[i].checked==true) {
+            valid=1;
+            break;
+          }
+        }
+        if(valid==0) {
+          alert("Please select atleast one course!");
+          return false;
+        }
+
+        let states = document.forms["myForm"]["states"].value;
+        if (states == "") {
+          alert("Select your state");
+          return false;
+        }
+
+        let address = document.forms["myForm"]["address"].value;
+        if (address == "") {
+          alert("Enter your address");
+          return false;
+        }
+
+
+        
+         return( true );
+      
+           
+
+         
+      } 
+      $('#your-form').submit(validateForm); 
